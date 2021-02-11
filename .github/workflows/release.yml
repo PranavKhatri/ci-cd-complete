@@ -41,7 +41,6 @@ jobs:
        steps:
          - name: Install it in Lambda Layers
            run: |
-             aws lambda publish-layer-version\
-             --layer-name ${{env.Release_Layer}} \
+             aws lambda publish-layer-version --layer-name ${{env.Release_Layer}} \
              --content S3Bucket="${{ env.PACKAGE_S3_BUCKET_NAME }}",S3Key="${{ env.DEPLOY_PACKAGE_NAME }}" \
              --compatible-runtimes python3.8
