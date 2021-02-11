@@ -21,7 +21,7 @@ jobs:
            run : pip download -r requirements.txt
 
          - name: Zip the function
-           run : zip -r function.zip  lambda_function.py ./ -x *.git*
+           run : zip -r function.zip  ./lambda_function.py -x *.git*
 
 
          - name: Create ZIP deployment package
