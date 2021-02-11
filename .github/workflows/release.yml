@@ -20,10 +20,6 @@ jobs:
          - name: Install Packages
            run : pip download -r requirements.txt
 
-         - name: Zip the function
-           run : zip -r function.zip  ./lambda_function.py -x *.git*
-
-
          - name: Create ZIP deployment package
            run : zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./  -x  *.git*
 
@@ -42,6 +38,9 @@ jobs:
        needs: [integrate-to-s3]
 
        steps:
+
+         - name: Zip the function
+           run : zip -r function.zip  ./lambda_function.py -x *.git*
 
          - name: Configure AWS Credentils Again
            uses: aws-actions/configure-aws-credentials@v1
