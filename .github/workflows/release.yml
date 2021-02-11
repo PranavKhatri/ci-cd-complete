@@ -1,7 +1,7 @@
 name: Deploy
 env:
-  PACKAGE_S3_BUCKET_NAME : "telephone-to-s3"
-  AWS_REGION_NAME        : "us-east-1"
+  PACKAGE_S3_BUCKET_NAME : "ci-cd-complete"
+  AWS_REGION_NAME        : "ap-south-1"
   DEPLOY_PACKAGE_NAME    : "gsuite-app-$(date +%Y%m%d).zip"
   Release_Layer          : "arn:aws:lambda:ap-south-1:726789220940:function:lambda-deploy"
 
