@@ -46,8 +46,8 @@ jobs:
              aws-secret-access-key: ${{ secrets.BOT_AWS_SECRET_KEY }}
              aws-region           : ${{ env.AWS_REGION_NAME }}
 
-         - name: Zip the Functiom
-           run : zip function.zip ./lambda_function.py .git*
+         - name: Zip the function
+           run : zip -r function.zip ./lambda_function.py *.git*
 
          - name: Install it in Lambda Layers
            run:
