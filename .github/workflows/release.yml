@@ -48,7 +48,9 @@ jobs:
              aws-region           : ${{ env.AWS_REGION_NAME }}
 
          - name: Install it in Lambda Layers
-           run: |
-             aws lambda publish-layer-version --layer-name ${{env.Release_Layer}} \
+           run:
+             aws lambda publish-layer-version \
+             --layer-name "layer-${{ github.sha }}" \
+             --description "My Python layer" \
              --content S3Bucket="${{ env.PACKAGE_S3_BUCKET_NAME }}",S3Key="${{ env.DEPLOY_PACKAGE_NAME }}" \
-             --compatible-runtimes python3.8
+             --compatible-runtimes python3.6 python3.7 python3.8
