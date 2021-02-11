@@ -47,7 +47,7 @@ jobs:
              aws-region           : ${{ env.AWS_REGION_NAME }}
 
          - name: Zip the Functiom
-           run : zip function.zip lambda_function.py 
+           run : zip function.zip ./lambda_function.py .git*
 
          - name: Install it in Lambda Layers
            run:
