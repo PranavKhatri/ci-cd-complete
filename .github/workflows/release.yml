@@ -50,7 +50,7 @@ jobs:
          - name: Install it in Lambda Layers
            run:
              aws lambda publish-layer-version \
-             --layer-name="${{env.Release_Layer}}" \
+             --layer-name=${{env.Release_Layer}} \
              --description "My Python layer" \
              --content S3Bucket="${{ env.PACKAGE_S3_BUCKET_NAME }}",S3Key="${{ env.DEPLOY_PACKAGE_NAME }}" \
              --compatible-runtimes python3.6 python3.7 python3.8
