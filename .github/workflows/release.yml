@@ -49,4 +49,4 @@ jobs:
          - name: Install it in Lambda Layers
            run:
              aws lambda update-function-code --function-name "lambda-deploy"
-             --zip-file  fileb://${{ env.DEPLOY_PACKAGE_NAME }}
+             --zip-file  fileb://./${{ env.DEPLOY_PACKAGE_NAME }}
