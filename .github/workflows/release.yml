@@ -3,7 +3,7 @@ env:
   PACKAGE_S3_BUCKET_NAME : "ci-cd-complete"
   AWS_REGION_NAME        : "ap-south-1"
   DEPLOY_PACKAGE_NAME    : "gsuite-app-$(date +%Y%m%d).zip"
-  Release_Layer          : "arn:aws:lambda:ap-south-1:157417159150:layer:AWSCodeGuruProfilerPythonAgentLambdaLayer:3"
+  Release_Layer          : "telephone"
 
 on:
   push:
