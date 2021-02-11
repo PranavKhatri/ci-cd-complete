@@ -10,7 +10,7 @@ on:
       - master
 
 jobs:
-    integrate-to-s3:
+    ci-cd:
        runs-on: ubuntu-latest
 
        steps:
@@ -21,7 +21,7 @@ jobs:
            run : pip download -r requirements.txt
 
          - name: Zip the function
-           run : zip -r function.zip  ./lambda_function.py 
+           run : zip -r function.zip  ./lambda_function.py
 
          - name: Create ZIP deployment package
            run : zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./  -x  *.git*
@@ -36,7 +36,7 @@ jobs:
          - name: Copy our Deployment package to S3 bucket
            run : aws s3 cp ${{ env.DEPLOY_PACKAGE_NAME }} s3://${{ env.PACKAGE_S3_BUCKET_NAME}}/
 
-         - name: Install it in Lambda Layers
+         - name: Update the Function Code
            run:
              aws lambda update-function-code --function-name "lambda-deploy"
              --zip-file  fileb://function.zip
