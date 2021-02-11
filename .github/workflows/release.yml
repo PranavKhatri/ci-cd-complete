@@ -3,8 +3,7 @@ env:
   PACKAGE_S3_BUCKET_NAME : "ci-cd-complete"
   AWS_REGION_NAME        : "ap-south-1"
   DEPLOY_PACKAGE_NAME    : "gsuite-app-$(date +%Y%m%d).zip"
-  Release_Layer          : "telephone"
-
+  release_layer          : ${{ format('gsuite-app-$(date +%Y%m%d)-dev', github.head_ref )}}
 on:
   push:
     branches:
@@ -47,10 +46,15 @@ jobs:
              aws-secret-access-key: ${{ secrets.BOT_AWS_SECRET_KEY }}
              aws-region           : ${{ env.AWS_REGION_NAME }}
 
+         - name: Setup Python 3.8
+           uses: actions/setup-python@v1
+           with:
+             python-version: 3.8
+
          - name: Install it in Lambda Layers
            run:
              aws lambda publish-layer-version \
-             --layer-name=${{env.Release_Layer}} \
+             --layer-name $release_layer \
              --description "My Python layer" \
              --content S3Bucket="${{ env.PACKAGE_S3_BUCKET_NAME }}",S3Key="${{ env.DEPLOY_PACKAGE_NAME }}" \
              --compatible-runtimes python3.6 python3.7 python3.8
