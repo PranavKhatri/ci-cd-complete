@@ -13,13 +13,13 @@ jobs:
     s3-integration:
       runs-on: ubuntu-latest
 
-       steps:
+      steps:
+
          - name: Git clone repository
            uses: actions/checkout@v2
 
          - name: Install Packages
            run : pip install -r requirements.txt --system -t lib/
-
 
          - name: Create ZIP deployment package
            run : zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./  -x  *.git*
