@@ -40,8 +40,11 @@ jobs:
 
     steps:
 
+      - name: Git clone repository
+        uses: actions/checkout@v2
+
       - name: Zip the function
-        run : zip -r function.zip ${{ env.DEPLOY_PACKAGE_NAME }} ./ -x *.git*.zip lambda_function.py
+        run : zip -r function.zip  lambda_function.py
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
