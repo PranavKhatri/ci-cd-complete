@@ -41,7 +41,7 @@ jobs:
     steps:
 
       - name: Zip the function
-        run : zip -r function.zip  -x *.git*.zip lambda_function.py
+        run : zip -r function.zip * -x *.git*.zip lambda_function.py
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
