@@ -18,7 +18,7 @@ jobs:
            uses: actions/checkout@v2
 
          - name: Install Packages
-           run : pip download -r requirements.txt --no-index --find-links=file://./
+           run : pip download -r requirements.txt --no-index --find-links=file://./requirements.txt
 
          - name: Zip the function
            run : zip -r function.zip  ./lambda_function.py
